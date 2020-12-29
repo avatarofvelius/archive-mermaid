@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <title>mermaid.js example</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+
+    <div class="mermaid">
+        pie title Test
+            "Part 1" : 55
+            "Part 2" : 45
+    </div>
+
+    <div class="mermaid">
+        gantt
+            title Project
+            dateFormat  YYYY-MM-DD
+
+            section Title
+            Visit mermaidjs           :active, cl1, 2020-12-20, 3d
+            Print arguments         :cl2, after cl1, 3d
+            Print task              :cl3, after cl2, 3d
+
+            click cl1 href "https://mermaidjs.github.io/"
+            click cl2 call printArguments("test1", "test2", test3)
+            click cl3 call printTask()
+
+            todayMarker stroke-width:5px,stroke:#0f0,opacity:0.5
+    </div>
+
+    <div class="mermaid">
+        classDiagram
+            class Person
+            Person : +String FirstName
+            Person : +String LastName
+            Person : +GetFullName()
+
+            class Employee
+            Person <|-- Employee
+            Employee : +Int32 EmployeeCode
+            Employee : +GetFullName()
+            Employee : +GetEmployeeCode()
+
+            Class Manager
+            Employee <|-- Manager
+            Manager : +Array EmployeeList
+            Manager : +GetFullName()
+            Manager : +GetEmployeeCode()
+
+
+            Animal <|-- Duck
+            Animal <|-- Fish
+            Animal <|-- Zebra
+            Animal : +int age
+            Animal : +String gender
+            Animal: +isMammal()
+            Animal: +mate()
+            class Duck{
+                +String beakColor
+                +swim()
+                +quack()
+            }
+            class Fish{
+                -int sizeInFeet
+                -canEat()
+            }
+            class Zebra{
+                +bool is_wild
+                +run()
+            }
+    </div>
+
+    <div class="mermaid">
+        graph LR
+        A[Square Rect] -- Link text --> B((Circle))
+        A --> C(Round Rect)
+        B --> D{Rhombus}
+        C --> D
+    </div>
+
+    <div class="mermaid">
+        graph TB
+            sq[Square shape] --> ci((Circle shape))
+
+            subgraph A
+                od>Odd shape]-- Two line<br/>edge comment --> ro
+                di{Diamond with <br/> line break} -.-> ro(Rounded<br>square<br>shape)
+                di==>ro2(Rounded square shape)
+            end
+
+            %% Notice that no text in shape are added here instead that is appended further down
+            e --> od3>Really long text with linebreak<br>in an Odd shape]
+
+            %% Comments after double percent signs
+            e((Inner / circle<br>and some odd <br>special characters)) --> f(,.?!+-*ز)
+
+            cyr[Cyrillic]-->cyr2((Circle shape Начало));
+
+            classDef green fill:#9f6,stroke:#333,stroke-width:2px;
+            classDef orange fill:#f96,stroke:#333,stroke-width:4px;
+            class sq,e green
+            class di orange
+    </div>
+
+    <script>mermaid.initialize({startOnLoad:true});</script>
+
+</body>
+
+</html>
